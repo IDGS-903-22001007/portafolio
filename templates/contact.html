@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="contact">
+    <div class="container">
+        <h1>Contacto</h1>
+        
+        <!-- Mensajes flash mejorados -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message flash-{{ category }}" id="flash-{{ loop.index }}">
+                            <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-triangle' }}"></i>
+                            <span>{{ message }}</span>
+                            <button type="button" class="close-flash" onclick="closeFlash('flash-{{ loop.index }}')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>¡Hablemos!</h3>
+                <p>Estoy siempre abierto a nuevas oportunidades y colaboraciones en el área de desarrollo de software.</p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:brayan.saul67@gmail.com" style="color: inherit; text-decoration: none;">brayan.saul67@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+5254778660388" style="color: inherit; text-decoration: none;">477-866-03-88</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>León, Gto., Jacobo Méndez #304</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/bryan-sa%C3%BAl-dom%C3%ADnguez-mares-b099a1287/" target="_blank" style="color: inherit; text-decoration: none;">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/IDGS-903-22001007" target="_blank" style="color: inherit; text-decoration: none;">GitHub</a>
+                </div>
+            </div>
+            
+            <form class="contact-form" method="POST" action="{{ url_for('contact') }}">
+                <div class="form-group">
+                    <label for="name">Nombre *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje *</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto o oportunidad..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+function closeFlash(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        element.style.animation = 'fadeOut 0.3s ease-in forwards';
+        setTimeout(() => {
+            element.remove();
+        }, 300);
+    }
+}
+
+// Auto close flash messages after 5 seconds
+document.addEventListener('DOMContentLoaded', function() {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach((message, index) => {
+        setTimeout(() => {
+            if (message.parentNode) {
+                closeFlash(message.id);
+            }
+        }, 5000 + (index * 200)); // Stagger the auto-close
+    });
+});
+</script>
+{% endblock %}
