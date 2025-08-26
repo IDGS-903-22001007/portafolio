@@ -226,6 +226,30 @@ body {
     transform: translateY(-2px);
 }
 
+/* Contact Section - Botones sociales */
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-buttons .btn {
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .social-buttons {
+        flex-direction: column;
+    }
+    
+    .social-buttons .btn {
+        width: 100%;
+    }
+}
+
 /* Skills Section Mejorada */
 .skills {
     padding: 120px 0;
