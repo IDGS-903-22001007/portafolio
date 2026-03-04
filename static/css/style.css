@@ -226,6 +226,17 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-tertiary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-tertiary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
 /* Contact Section - Botones sociales */
 .social-buttons {
     display: flex;
@@ -994,4 +1005,98 @@ html {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Navbar responsive y skills animadas */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+}
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: #222;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        z-index: 100;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+.hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0078d7;
+    margin-bottom: 1rem;
+}
+.skill-bar-bg {
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.skill-bar {
+    height: 10px;
+    background: linear-gradient(90deg, #0078d7, #00c6a7);
+    width: 0;
+    transition: width 1.5s;
+}
+.skill-item.visible .skill-bar {
+    width: var(--skill-level);
+}
+.project-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.project-card h3 {
+    margin-bottom: 0.5rem;
+}
+.project-card p {
+    margin-bottom: 1rem;
+}
+.project-card .project-features {
+    margin-bottom: 1rem;
+}
+.project-card .technologies {
+    margin-bottom: 1rem;
+}
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-form input, .contact-form textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact-form button {
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.footer {
+    background: #181818;
+    color: #fff;
 }
